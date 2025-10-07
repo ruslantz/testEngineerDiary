@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Дневник инженера">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data: https:; child-src 'none';">
+    <meta http-equiv="Referrer-Policy" content="no-referrer">
+    
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="/manifest.json">
+    
+    <!-- Мета-теги для Apple -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="Дневник инженера">
+    <link rel="apple-touch-icon" href="/icons/icon-152x152.png">
+    
+    <!-- Мета-теги для Windows -->
+    <meta name="msapplication-TileImage" content="/icons/icon-144x144.png">
+    <meta name="msapplication-TileColor" content="#764ba2">
+    <meta name="theme-color" content="#764ba2">
+    
+    <title>Дневник инженера | Трекер прогресса</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1 class="header__title">Дневник инженера</h1>
+        </header>
+
+        <main class="main">
+            <section id="startScreen" class="search-section">
+                <div class="search-form">
+                    <label for="childId" class="search-form__label">Введите ID</label>
+                    <div class="search-form__group">
+                        <input type="text" id="childId" class="search-form__input" placeholder="Например: IvanovI19" aria-describedby="idHelp" value="IvanovI19">
+                        <button id="findBtn" class="search-form__button">Найти</button>
+                    </div>
+                    <small id="idHelp" class="search-form__help">ID можно получить у педагога</small>
+                </div>
+            </section>
+
+            <section id="childData" class="profile-card" hidden aria-live="polite">
+                <div class="profile-card__header">
+                    <div class="profile-card__photo" id="avatarContainer">
+                        <img id="photo" src="" alt="Фото инженера" class="profile-card__img" width="150" height="150" loading="lazy">
+                        <div class="badge-counter" id="badgeCounter">0</div>
+                        <div class="badges-container" id="badgesContainer">
+                            <!-- Жетоны будут добавляться динамически -->
+                        </div>
+                    </div>
+                    <div class="profile-card__info">
+                        <h2 id="name" class="profile-card__name"></h2>
+                        <div class="profile-card__meta">
+                            <span id="group" class="profile-card__badge"></span>
+                            <span id="birthdate" class="profile-card__date"></span>
+                        </div>
+                    </div>
+                    <button class="back-btn" onclick="backToSearch()">← Назад</button>
+                </div>
+
+                <div class="lessons-section">
+                    <h3 class="lessons-section__title">Занятия по конструированию</h3>
+                    <div id="lessonsContainer" class="lessons-grid">
+                        <!-- Сюда будут добавляться занятия автоматически -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- Секция данных занятия -->
+            <section id="lessonData" class="child-data" hidden>
+                <button class="back-btn" onclick="backToSearch()">← Назад</button>
+                
+                <div class="lesson-header">
+                    <h2 id="lessonTitle">Занятие</h2>
+                    <p id="lessonNumber" class="lesson-number"></p>
+                    <p id="lessonDate" class="lesson-date"></p>
+                    <p id="childrenCount" class="children-count"></p>
+                </div>
+                
+                <div class="lesson-table-container">
+                    <div id="childrenContainer" class="children-container">
+                        <!-- Таблица будет добавлена здесь -->
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Попап для фото занятия -->
+    <dialog id="lessonPhotoPopup" class="photo-popup">
+        <div class="popup-content">
+            <button class="close-btn" onclick="closeLessonPhotoPopup()">×</button>
+            <h3 id="lessonPhotoTitle"></h3>
+            <img id="lessonPhotoImage" class="popup-image" alt="Фото занятия">
+        </div>
+    </dialog>
+
+    <!-- Попап для занятия -->
+    <dialog id="lessonPopup" class="lesson-modal">
+        <div class="lesson-modal__content">
+            <button id="closePopup" class="lesson-modal__close" aria-label="Закрыть">×</button>
+            <img id="popupImage" src="" alt="Фото с занятия" class="lesson-modal__image">
+            <div class="lesson-modal__info">
+                <h3 id="popupTitle" class="lesson-modal__title"></h3>
+                <p id="popupDate" class="lesson-modal__date"></p>
+                <p id="popupDescription" class="lesson-modal__description"></p>
+                <div id="popupSkills" class="lesson-modal__skills"></div>
+            </div>
+        </div>
+    </dialog>
+
+    <script src="app.js"></script>
+</body>
+</html>

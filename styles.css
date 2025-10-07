@@ -1,0 +1,890 @@
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #6B5B95 0%, #3D2B56 100%);
+  padding: 15px;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 100vh;
+  overflow-x: hidden; /* Предотвращаем горизонтальный скролл */
+}
+
+.container {
+  width: 100%;
+  max-width: 800px;
+  background: white;
+  padding: 25px;
+  border-radius: 15px;
+  box-shadow: 0 15px 30px rgba(59, 43, 86, 0.15);
+  text-align: center;
+  margin: 20px 0;
+  box-sizing: border-box; /* Важно для правильного расчета размеров */
+}
+
+.header__title {
+  color: #3D2B56;
+  font-size: clamp(1.8rem, 4vw, 2.2rem); /* Адаптивный размер шрифта */
+  font-weight: 700;
+  margin-bottom: 20px;
+  background: linear-gradient(135deg, #6B5B95 0%, #3D2B56 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  word-wrap: break-word; /* Перенос длинных слов */
+  overflow-wrap: break-word;
+}
+
+.search-form {
+  background: #F0E6FF;
+  padding: 20px;
+  border-radius: 12px;
+  margin-bottom: 20px;
+  box-sizing: border-box;
+}
+
+.search-form__label {
+  display: block;
+  font-weight: 600;
+  color: #3D2B56;
+  margin-bottom: 8px;
+  font-size: 1rem;
+}
+
+.search-form__group {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 8px;
+  flex-wrap: wrap; /* Разрешаем перенос на маленьких экранах */
+}
+
+.search-form__input {
+  flex: 1;
+  min-width: 200px; /* Минимальная ширина для удобства */
+  padding: 12px;
+  border: 2px solid #D8BFD8;
+  border-radius: 8px;
+  font-size: 16px;
+  transition: all 0.3s ease;
+  background: white;
+  box-sizing: border-box;
+}
+
+.search-form__input:focus {
+  outline: none;
+  border-color: #9370DB;
+  box-shadow: 0 0 0 3px rgba(147, 112, 219, 0.2);
+}
+
+.search-form__button {
+  padding: 12px 20px;
+  background: linear-gradient(135deg, #9370DB 0%, #6B5B95 100%);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+  flex-shrink: 0; /* Не сжимать кнопку */
+}
+
+.search-form__button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(107, 91, 149, 0.3);
+}
+
+.search-form__help {
+  color: #6B5B95;
+  font-size: 0.9rem;
+}
+
+.profile-card {
+  background: white;
+  border-radius: 15px;
+  padding: 20px;
+  box-shadow: 0 8px 20px rgba(59, 43, 86, 0.1);
+  margin-top: 20px;
+  box-sizing: border-box;
+  width: 100%;
+  overflow: visible; /* Скрываем переполнение */
+}
+
+.profile-card__header {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.profile-card__photo {
+  flex-shrink: 0;
+  position: relative;
+  overflow: visible; /* ИЗМЕНИТЕ С hidden НА visible */
+}
+
+.profile-card__img {
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #F0E6FF;
+  box-shadow: 0 3px 10px rgba(59, 43, 86, 0.1);
+  max-width: 100%; /* Предотвращаем переполнение изображения */
+}
+
+.profile-card__info {
+  text-align: left;
+  flex: 1;
+  min-width: 200px; /* Минимальная ширина для информации */
+}
+
+.profile-card__name {
+  font-size: clamp(1.4rem, 3vw, 1.6rem); /* Адаптивный размер */
+  font-weight: 700;
+  color: #3D2B56;
+  margin: 0 0 8px 0;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+.profile-card__meta {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.profile-card__badge {
+  background: linear-gradient(135deg, #9370DB 0%, #6B5B95 100%);
+  color: white;
+  padding: 4px 12px;
+  border-radius: 15px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.profile-card__date {
+  color: #6B5B95;
+  font-size: 1rem;
+}
+
+/* Стили для секции занятий */
+.lessons-section {
+  margin-top: 20px;
+  padding: 20px;
+  background: #F0E6FF;
+  border-radius: 12px;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.lessons-section__title {
+  font-size: clamp(1.1rem, 3vw, 1.3rem);
+  color: #3D2B56;
+  margin-bottom: 20px;
+  text-align: center;
+  font-weight: 600;
+  word-wrap: break-word;
+}
+
+.lessons-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 15px;
+  margin-top: 15px;
+  width: 100%;
+}
+
+.lesson-card {
+  background: white;
+  border-radius: 10px;
+  padding: 12px;
+  box-shadow: 0 3px 10px rgba(59, 43, 86, 0.1);
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  text-align: left;
+  box-sizing: border-box;
+  overflow: hidden; /* Скрываем переполнение */
+  word-wrap: break-word;
+}
+
+.lesson-card__image {
+  width: 100%;
+  height: 140px;
+  object-fit: cover;
+  border-radius: 6px;
+  margin-bottom: 10px;
+  background: #F0E6FF;
+  max-width: 100%; /* Важно для предотвращения переполнения */
+}
+
+.lesson-card__title {
+  font-size: 1rem;
+  color: #3D2B56;
+  margin: 0 0 6px 0;
+  font-weight: 600;
+  line-height: 1.3;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  word-wrap: break-word;
+}
+
+.lesson-card__date {
+  font-size: 0.85rem;
+  color: #6B5B95;
+  margin: 0;
+  word-wrap: break-word;
+}
+
+.no-lessons {
+  text-align: center;
+  color: #6B5B95;
+  font-style: italic;
+  padding: 40px;
+  grid-column: 1 / -1;
+}
+
+/* Стили для модального окна занятия */
+.lesson-modal {
+  border: none;
+  border-radius: 15px;
+  padding: 0;
+  max-width: 90%;
+  width: 580px;
+  box-sizing: border-box;
+}
+
+.lesson-modal::backdrop {
+  background: rgba(59, 43, 86, 0.8);
+  backdrop-filter: blur(5px);
+}
+
+.lesson-modal__content {
+  position: relative;
+  padding: 25px;
+  background: white;
+  border-radius: 15px;
+  box-sizing: border-box;
+  max-width: 100%;
+}
+
+.lesson-modal__close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: #9370DB;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 35px;
+  height: 35px;
+  font-size: 18px;
+  cursor: pointer;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  flex-shrink: 0;
+}
+
+.lesson-modal__close:hover {
+  background: #6B5B95;
+  transform: rotate(90deg);
+}
+
+.lesson-modal__image {
+  width: 100%;
+  max-height: 280px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-bottom: 15px;
+  max-width: 100%;
+}
+
+.lesson-modal__info {
+  text-align: left;
+  word-wrap: break-word;
+}
+
+.lesson-modal__title {
+  font-size: clamp(1.2rem, 3vw, 1.4rem);
+  color: #3D2B56;
+  margin-bottom: 8px;
+  font-weight: 600;
+  word-wrap: break-word;
+}
+
+.lesson-modal__date {
+  color: #6B5B95;
+  font-size: 1rem;
+  margin-bottom: 15px;
+  font-weight: 500;
+  word-wrap: break-word;
+}
+
+.lesson-modal__description {
+  color: #3D2B56;
+  line-height: 1.5;
+  margin-bottom: 15px;
+  font-size: 0.95rem;
+  word-wrap: break-word;
+}
+
+.lesson-modal__skills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.skill-badge {
+  background: linear-gradient(135deg, #9370DB 0%, #6B5B95 100%);
+  color: white;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+/* Стили для системы жетонов */
+.badge-counter {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  background: linear-gradient(135deg, #ff4757 0%, #ff6b81 100%);
+  color: white;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  font-size: 0.9rem;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  border: 3px solid white;
+  box-shadow: 0 2px 8px rgba(255, 71, 87, 0.3);
+  z-index: 10;
+}
+
+.badges-container {
+  position: absolute;
+  top: -30px;
+  left: -30px;
+  width: 260px;
+  height: 260px;
+  pointer-events: none;
+  opacity: 0;
+  transition: all 0.5s ease;
+  z-index: 999;
+}
+
+.badges-container.visible {
+  pointer-events: all;
+  opacity: 1;
+}
+
+.badge {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  /* ЗАМЕНИТЕ border на box-shadow */
+  box-shadow: 
+    0 0 0 3px rgb(153, 6, 128), /* Это заменит border */
+    0 6px 20px rgba(0, 0, 0, 0.3); /* Ваша тень остается */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.4s ease;
+  transform: scale(0);
+  cursor: pointer;
+  background: white;
+  z-index: 1000;
+}
+
+.badge.outer-badge {
+  width: 45px;
+  height: 45px;
+  z-index: 1001;
+  box-shadow: 
+  0 0 0 2px rgb(107, 91, 149),
+  0 4px 15px rgba(107, 91, 149, 0.4);
+}
+
+.badges-container.visible .badge {
+  transform: scale(1);
+}
+
+.badge-image {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+  max-width: 100%;
+}
+
+.badge.outer-badge .badge-image {
+  width: 45px;
+  height: 45px;
+}
+
+.badge-tooltip {
+  position: absolute;
+  bottom: -35px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(59, 43, 86, 0.9);
+  color: white;
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-size: 0.8rem;
+  white-space: nowrap;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+  z-index: 30;
+  max-width: 200px;
+  word-wrap: break-word;
+}
+
+.badge:hover .badge-tooltip {
+  opacity: 1;
+}
+
+/* Анимация появления для внешнего круга */
+.badge.outer-badge {
+  animation-delay: 0.2s;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+  body {
+    padding: 8px;
+  }
+  
+  .container {
+    padding: 20px;
+    margin: 15px 0;
+  }
+  
+  .profile-card__header {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .profile-card__info {
+    text-align: center;
+    min-width: auto;
+  }
+  
+  .profile-card__meta {
+    justify-content: center;
+  }
+  
+  .search-form__group {
+    flex-direction: column;
+  }
+  
+  .search-form__input {
+    min-width: auto;
+    width: 100%;
+  }
+  
+  .lessons-grid {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 15px;
+  }
+  
+  .lesson-modal {
+    width: 95%;
+    margin: 10px;
+  }
+  
+  .lesson-modal__content {
+    padding: 20px;
+  }
+  
+  .lesson-modal__image {
+    max-height: 250px;
+  }
+  
+  .badges-container {
+    width: 220px;
+    height: 220px;
+    top: -40px;
+    left: -40px;
+  }
+}
+
+@media (max-width: 480px) {
+  .header__title {
+    font-size: 1.8rem;
+  }
+  
+  .profile-card__img {
+    width: 120px;
+    height: 120px;
+  }
+  
+  .search-form {
+    padding: 15px;
+  }
+  
+  .search-form__input,
+  .search-form__button {
+    padding: 12px;
+  }
+  
+  /* ОПТИМИЗИРОВАННЫЕ СТИЛИ ДЛЯ КАРТОЧЕК */
+  .lessons-grid {
+    grid-template-columns: 1fr; /* Одна колонка на маленьких экранах */
+    gap: 12px;
+  }
+  
+  .lesson-card {
+    padding: 12px;
+    min-height: auto; /* Убираем фиксированную высоту */
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .lesson-card__image {
+    height: 120px;
+    margin-bottom: 8px;
+  }
+  
+  .lesson-card__title {
+    font-size: 0.95rem;
+    line-height: 1.2;
+    margin-bottom: 6px;
+    -webkit-line-clamp: 3;
+  }
+  
+  .lesson-card__date {
+    font-size: 0.8rem;
+  }
+  
+  .lesson-modal__title {
+    font-size: 1.3rem;
+  }
+  
+  .lesson-modal__description {
+    font-size: 0.9rem;
+  }
+  
+  .badges-container {
+    width: 180px;
+    height: 180px;
+    top: -50px;
+    left: -50px;
+  }
+  
+  .badge {
+    width: 40px;
+    height: 40px;
+  }
+  
+  .badge.outer-badge {
+    width: 35px;
+    height: 35px;
+  }
+  
+  .badge-image {
+    width: 40px;
+    height: 40px;
+  }
+  
+  .badge.outer-badge .badge-image {
+    width: 35px;
+    height: 35px;
+  }
+}
+
+/* Дополнительные улучшения для очень маленьких экранов */
+@media (max-width: 360px) {
+  .container {
+    padding: 15px;
+  }
+  
+  .header__title {
+    font-size: 1.6rem;
+  }
+  
+  .profile-card {
+    padding: 15px;
+  }
+  
+  .profile-card__name {
+    font-size: 1.3rem;
+  }
+  
+  .profile-card__img {
+    width: 100px;
+    height: 100px;
+  }
+  
+  /* Еще более компактные карточки */
+  .lessons-grid {
+    gap: 8px;
+  }
+  
+  .lesson-card {
+    padding: 10px;
+  }
+  
+  .lesson-card__image {
+    height: 100px;
+  }
+  
+  .lesson-card__title {
+    font-size: 0.9rem;
+    -webkit-line-clamp: 3;
+  }
+  
+  .lesson-card__date {
+    font-size: 0.75rem;
+  }
+  
+  .lesson-modal__content {
+    padding: 15px;
+  }
+  
+  .lesson-modal__close {
+    width: 30px;
+    height: 30px;
+    font-size: 16px;
+  }
+}
+
+/* Убираем старые ненужные стили */
+.profile-card__progress,
+.progress-stats,
+.progress-item,
+.ai-report,
+.chart-button {
+  display: none;
+}
+
+/* Анимация появления значков */
+@keyframes badgePop {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* Стили для таблицы занятия */
+.lesson-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    margin: 20px 0;
+}
+
+.lesson-table th {
+    background: #4CAF50;
+    color: white;
+    padding: 15px 10px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 0.9em;
+}
+
+.lesson-table td {
+    padding: 12px 10px;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.lesson-table tr:last-child td {
+    border-bottom: none;
+}
+
+.lesson-table tr:hover {
+    background: #f8f9fa;
+}
+
+/* Колонки таблицы */
+.avatar-col { width: 80px; }
+.name-col { width: 35%; }
+.group-col { width: 120px; }
+.photo-col { width: 120px; }
+
+/* Аватар в таблице */
+.child-avatar-table {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #e0e0e0;
+}
+
+/* Имя в таблице */
+.child-name-table {
+    font-weight: 600;
+    font-size: 0.95em;
+    margin-bottom: 4px;
+}
+
+.child-id-table {
+    font-size: 0.8em;
+    color: #888;
+    font-family: monospace;
+}
+
+/* Группы */
+.group-badge {
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-size: 0.8em;
+    font-weight: 500;
+    display: inline-block;
+}
+
+.group-junior { background: #e3f2fd; color: #1976d2; }
+.group-middle { background: #e8f5e8; color: #2e7d32; }
+.group-senior { background: #fff3e0; color: #f57c00; }
+.group-prep { background: #fce4ec; color: #c2185b; }
+.group-default { background: #f5f5f5; color: #666; }
+
+/* Миниатюрное фото */
+.photo-preview-container {
+    position: relative;
+    width: 80px;
+    height: 80px;
+    border-radius: 8px;
+    overflow: hidden;
+    cursor: pointer;
+    border: 2px solid #e0e0e0;
+}
+
+.lesson-photo-thumbnail {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.2s;
+}
+
+.photo-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0,0,0,0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.2s;
+    font-size: 1.2em;
+    color: white;
+}
+
+.photo-preview-container:hover .photo-overlay {
+    opacity: 1;
+}
+
+.photo-preview-container:hover .lesson-photo-thumbnail {
+    transform: scale(1.1);
+}
+
+.no-photo-text {
+    color: #999;
+    font-style: italic;
+    font-size: 0.9em;
+}
+
+/* Адаптивность для таблицы */
+@media (max-width: 768px) {
+    .lesson-table {
+        font-size: 0.8em;
+    }
+    
+    .lesson-table th,
+    .lesson-table td {
+        padding: 8px 5px;
+    }
+    
+    .child-avatar-table {
+        width: 40px;
+        height: 40px;
+    }
+    
+    .photo-preview-container {
+        width: 60px;
+        height: 60px;
+    }
+    
+    .avatar-col { width: 60px; }
+    .name-col { width: 30%; }
+    .group-col { width: 100px; }
+    .photo-col { width: 100px; }
+}
+
+@media (max-width: 480px) {
+    .lesson-table-container {
+        overflow-x: auto;
+    }
+    
+    .lesson-table {
+        min-width: 400px;
+    }
+    
+    .child-name-table {
+        font-size: 0.85em;
+    }
+    
+    .group-badge {
+        font-size: 0.7em;
+        padding: 3px 6px;
+    }
+}
+.lesson-table-container {
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 10px;
+}
+
+.badges-container.visible .badge {
+  animation: badgePop 0.5s ease forwards;
+}
+
+/* Задержка для внешнего круга */
+.badges-container.visible .badge.outer-badge {
+  animation-delay: 0.1s;
+}
+
+/* Общие улучшения для предотвращения переполнения */
+* {
+  box-sizing: border-box;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Предотвращаем горизонтальный скролл */
+html, body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
